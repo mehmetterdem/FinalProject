@@ -3,6 +3,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,11 +17,11 @@ namespace DataAccessLayer.Concrete.InMemory
         {
             _products = new List<Product>
            {
-               new Product{ProtuctId=1,CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitInStock=15},
-               new Product{ProtuctId=2,CategoryId=1,ProductName="Kamera",UnitPrice=500,UnitInStock=3},
-               new Product{ProtuctId=3,CategoryId=2,ProductName="Telefon",UnitPrice=1500,UnitInStock=2},
-               new Product{ProtuctId=4,CategoryId=2,ProductName="Klavye",UnitPrice=150,UnitInStock=65},
-               new Product{ProtuctId=1,CategoryId=1,ProductName="Mouse",UnitPrice=85,UnitInStock=1},
+               new Product{ProductID=1,CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitsInStock=15},
+               new Product{ProductID=2,CategoryId=1,ProductName="Kamera",UnitPrice=500,UnitsInStock=3},
+               new Product{ProductID=3,CategoryId=2,ProductName="Telefon",UnitPrice=1500,UnitsInStock=2},
+               new Product{ProductID=4,CategoryId=2,ProductName="Klavye",UnitPrice=150,UnitsInStock=65},
+               new Product{ProductID=1,CategoryId=1,ProductName="Mouse",UnitPrice=85,UnitsInStock=1},
            };
             
         }
@@ -32,13 +33,23 @@ namespace DataAccessLayer.Concrete.InMemory
 
         public void Delete(Product product)
         {
-            Product productToDelete = _products.Where(x => x.ProtuctId == product.ProtuctId).FirstOrDefault();
+            Product productToDelete = _products.Where(x => x.ProductID == product.ProductID).FirstOrDefault();
             _products.Remove(productToDelete);
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAll()
         {
             return _products.ToList();
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllByCategory(int categoryId)
@@ -48,10 +59,10 @@ namespace DataAccessLayer.Concrete.InMemory
 
         public void Update(Product product)
         {
-            Product updateToProduct = _products.FirstOrDefault(x => x.ProtuctId == product.ProtuctId);
+            Product updateToProduct = _products.FirstOrDefault(x => x.ProductID == product.ProductID);
             updateToProduct.ProductName = product.ProductName;
             updateToProduct.CategoryId = product.CategoryId;
-            updateToProduct.UnitInStock = product.UnitInStock;
+            updateToProduct.UnitsInStock = product.UnitsInStock;
             updateToProduct.UnitPrice = product.UnitPrice;
         }
     }

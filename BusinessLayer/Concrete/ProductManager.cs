@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-   public class ProductManager : IProductService
+    public class ProductManager : IProductService
     {
         IProductDal _productDal;
 
@@ -23,6 +23,16 @@ namespace BusinessLayer.Concrete
             //iş kodları
             //yetki kontrolu
             return _productDal.GetAll();
+        }
+
+        public List<Product> GetByCategoryId(int id)
+        {
+            return _productDal.GetAll(x => x.CategoryId == id);
+        }
+
+        public List<Product> GetByUniPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(x => x.UnitPrice >= min && x.UnitPrice <= max);
         }
     }
 }
