@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace BusinessLayer.Abstract
 {
-    public interface ICategoryDal : IEntityRepository<Category>
+    public interface ICategoryService
     {
-
+        public List<Category> GetAll();
+        Category GetById(int categoryId);
     }
 }

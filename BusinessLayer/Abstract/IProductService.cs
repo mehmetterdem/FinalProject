@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace BusinessLayer.Abstract
         List<Product> GetAll();
         List<Product> GetByCategoryId(int id);
         List<Product> GetByUniPrice(decimal min,decimal max);
+        public List<ProductDetailDto> GetProductDetails();
+
     }
 }
