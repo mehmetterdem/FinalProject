@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 23)
+            if (DateTime.Now.Hour == 23 )
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
@@ -49,7 +49,7 @@ namespace BusinessLayer.Concrete
 
         public IDataResult<List<Product>> GetByCategoryId(int id)
         {
-            if (DateTime.Now.Hour == 24)
+            if (DateTime.Now.Hour == 23)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
