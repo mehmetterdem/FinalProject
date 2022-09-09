@@ -1,10 +1,13 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Constant;
+using BusinessLayer.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using EntityLayer.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +25,11 @@ namespace BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+
+         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            if (product.ProductName.Length < 2)
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+           
             _productDal.Add(product);
 
             return new SuccessResult(Messages.ProductAdded);
