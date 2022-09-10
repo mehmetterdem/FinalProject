@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess;
+using Core.Utilities.Results;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace BusinessLayer.Abstract
         void Add(Category category);
         void Delete(Category category);
         void Update(Category category);
-        public List<Category> GetAll();
-        Category GetById(int categoryId);
+        public IDataResult<List<Category>> GetAll();
+        IDataResult<Category> GetById(int categoryId);
     }
 }

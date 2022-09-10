@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using Core.DataAccess.EntityFramework;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -29,14 +30,14 @@ namespace BusinessLayer.Concrete
             _categoryDal.Delete(category);
         }
 
-        public List<Category> GetAll()
+        public IDataResult<List<Category>> GetAll()
         {
-            return _categoryDal.GetAll();
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        public Category GetById(int categoryId)
+        public IDataResult<Category> GetById(int categoryId)
         {
-            return _categoryDal.Get(x => x.CategoryId == categoryId);
+            return new SuccessDataResult<Category>(_categoryDal.Get(x => x.CategoryId == categoryId));
         }
 
         public void Update(Category category)
