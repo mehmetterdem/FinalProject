@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccessLayer.Abstract;
@@ -58,6 +59,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+            ServiceTool.Create(services);
 
         }
 
@@ -74,7 +76,7 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-             
+
             app.UseAuthentication();
 
             app.UseAuthorization();

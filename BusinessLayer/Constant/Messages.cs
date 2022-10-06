@@ -18,11 +18,11 @@ namespace BusinessLayer.Constant
         public static string ProductNameAlreadyExists="Ürün ismi mevcut ";
         public static string CategoryLimiteExceded="Kategori limiti aşıldığı için yeni kategori eklenemiyor";
         public static string AuthorizationDenied="Yetkiniz Yok";
-        public static string UserRegistered="";
-        public static string UserNotFound ="";
-        public static string PasswordError ="";
-        public static string UserAlreadyExists="";
-        public static string SuccessfulLogin="";
-        public static string AccessTokenCreated="";
+        public static string UserRegistered="kullanıcı kaydedildi";
+        public static string UserNotFound ="kullanıcı bulunamadı";
+        public static string PasswordError ="şifre hatalı";
+        public static string UserAlreadyExists="kullanıcı zaten var";
+        public static string SuccessfulLogin="giriş basarılı";
+        public static string AccessTokenCreated="token olusturuldu";
     }
 }
